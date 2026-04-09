@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Shimmer skeleton ── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* ── Fade animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.fade-up   { animation: fadeUp 0.6s cubic-bezier(.16,1,.3,1) both; }
+.fade-up-1 { animation: fadeUp 0.6s 0.1s cubic-bezier(.16,1,.3,1) both; }
+.fade-up-2 { animation: fadeUp 0.6s 0.2s cubic-bezier(.16,1,.3,1) both; }
+.fade-up-3 { animation: fadeUp 0.6s 0.3s cubic-bezier(.16,1,.3,1) both; }
+.fade-up-4 { animation: fadeUp 0.6s 0.4s cubic-bezier(.16,1,.3,1) both; }
+.scale-in  { animation: scaleIn 0.5s cubic-bezier(.16,1,.3,1) both; }
+
+/* ── Floating orbs background ── */
+@keyframes float1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(30px,-20px) scale(1.05); }
+  66%     { transform: translate(-20px,15px) scale(0.97); }
+}
+@keyframes float2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(-25px,20px) scale(1.03); }
+  66%     { transform: translate(20px,-15px) scale(0.98); }
+}
+@keyframes float3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%     { transform: translate(15px,25px) scale(1.04); }
+}
+.orb-1 { animation: float1 12s ease-in-out infinite; }
+.orb-2 { animation: float2 15s ease-in-out infinite; }
+.orb-3 { animation: float3 10s ease-in-out infinite; }
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-amber {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Card hover ── */
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  border-color: #fcd34d;
+}
+
+/* ── Glass card ── */
+.glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.glass-dark {
+  background: rgba(15,23,42,0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #fff;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 8px rgba(245,158,11,0.3);
+}
+.btn-primary:hover  {
+  background: linear-gradient(135deg, #d97706, #ea580c);
+  box-shadow: 0 6px 20px rgba(245,158,11,0.4);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: scale(0.98); box-shadow: none; }
+.btn-primary:disabled { opacity: 0.5; pointer-events: none; }
+
+.btn-ghost {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.15s ease;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* ── Glow effects ── */
+.glow-amber {
+  box-shadow: 0 0 30px rgba(245,158,11,0.25), 0 0 60px rgba(245,158,11,0.1);
+}
+.glow-sm {
+  box-shadow: 0 0 15px rgba(245,158,11,0.2);
+}
+
+/* ── Noise texture overlay ── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ── Scrollbar ── */
+* { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid #f59e0b; outline-offset: 2px; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+
+/* ── Live dot ── */
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: 0.5; transform: scale(1.4); }
+}
+.live-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
+
+/* ── Marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 20s linear infinite; }
